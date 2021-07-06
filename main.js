@@ -1,13 +1,14 @@
 // main.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, Menu } = require('electron');
 const mkdirp = require('mkdirp');
 const fs = require('fs-extra');
 const path = require('path');
 var Jimp = require('jimp');
 let filepath;
 
+console.log(Menu.getApplicationMenu())
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -46,6 +47,7 @@ function createWindow () {
         dialog.showMessageBox({message:"Êtes vous sûr.e de vouloir continuer ?", 
                                 title: "Confirmation", 
                                 type: "question", 
+                                checkboxLabel: "noir et blanc",
                                 buttons: ["oui", "non"], 
                                 cancelId: 1 })
                                 .then(result => {
@@ -62,7 +64,7 @@ function createWindow () {
                                           files.forEach(async file => {
                                               return Jimp.read(srcDir + "\\" + file)
                                               .then(image => {
-                                                return image
+                                                let temp = image
                                                   .resize(data == "1" ? 350
                                                           :data == "2" ? 500
                                                           :data == "3" ? 750
@@ -77,7 +79,10 @@ function createWindow () {
                                                           :data == "5" ? 1900
                                                           : 2500
                                                           )
-                                                  .write(destDir + "\\" + file);
+                                                  if (result.checkboxChecked) {
+                                                    temp.grayscale()
+                                                  }
+                                                  return temp.write(destDir + "\\" + file);
                                               })
                                           })
                                         });
