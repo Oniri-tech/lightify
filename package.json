@@ -1,0 +1,21 @@
+{
+  "name": "resize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Figueroa Kevin",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.1.5",
+    "open-file-explorer": "^1.0.2"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "jimp": "^0.16.1",
+    "mkdirp": "^1.0.4",
+    "sharp": "^0.28.3"
+  }
+}

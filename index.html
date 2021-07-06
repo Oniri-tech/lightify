@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Image Converter</title>
+  </head>
+  <body>
+    <h1>Convertisseur d'image</h1>
+        <div class="input-div">
+            <button name="input" id="input" >choisissez un Dossier </button>
+            <p id="path"></p>
+        </div>
+        <div class="input-div">
+          <select name="size" id="sizeSelector">
+            <option value="" disabled selected>choisissez une taille</option>
+            <option value="1">très petit</option>
+            <option value="2">petit</option>
+            <option value="3">moyen</option>
+            <option value="4">grand</option>
+            <option value="5">très grand</option>
+            <option value="6">trop grand</option>
+          </select>
+          <button name="resize" id="resize-button">Resize mes images</button>
+        </div>
+        
+    
+    <script src="./renderer.js"></script>
+  </body>
+</html>
